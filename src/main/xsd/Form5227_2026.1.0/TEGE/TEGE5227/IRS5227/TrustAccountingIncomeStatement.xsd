@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.irs.gov/efile" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.irs.gov/efile" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+
+	<xsd:annotation>
+		<xsd:documentation>
+			<Description>Trust Accounting Income Statement</Description>
+			<Purpose>Attach a statement showing the allocation of amounts between income and principal.</Purpose>
+			<TaxYear>2026</TaxYear>
+			<MaturityLevel>Final Schema Version RL10A Drop 1</MaturityLevel>
+			<ReleaseDate>May 28 2026</ReleaseDate>
+		</xsd:documentation>
+	</xsd:annotation>
+
+	<xsd:include schemaLocation="../../../Common/efileTypes.xsd"/>
+	<xsd:include schemaLocation="IRS5227.xsd"/>
+
+	<!-- ======================================================================= -->
+	<!-- ================== Trust Accounting Income Statement ================== -->
+	<!-- ======================================================================= -->
+
+	<xsd:element name="TrustAccountingIncomeStatement">
+		<xsd:annotation>
+			<xsd:documentation>Trust Accounting Income Statement</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="TrustAccountingIncomeStatementType">
+					<xsd:attributeGroup ref="DocumentAttributes">
+						<xsd:annotation>
+							<xsd:documentation>Common return document attributes</xsd:documentation>
+						</xsd:annotation>
+					</xsd:attributeGroup>
+					<xsd:attribute name="documentName" type="xsd:string" fixed="TrustAccountingIncomeStatement">
+						<xsd:annotation>
+							<xsd:documentation>IRS internal use only. To avoid error in the return, do not include the attribute name or value.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="TrustAccountingIncomeStatementType">
+		<xsd:annotation>
+			<xsd:documentation>Content model for Trust Accounting Income Statement</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+
+			<!-- Repeating Group - Trust Accounting Income -->
+			<xsd:element name="TrustAccountingIncomeGrp" type="TrustAccountingIncomeGrpType" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Repeating Group - Trust Accounting Income</Description>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="TrustAccountingIncomeGrpType">
+		<xsd:sequence>
+
+			<!-- Description of the item -->
+			<xsd:element name="DetailedItemDesc" type="ShortExplanationType">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Description of the item</Description>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Total accounting income  amount -->
+			<xsd:element name="TotalAccountingIncomeAmt" type="USAmount13DgtType">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Total accounting income  amount</Description>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Allocated income  amount -->
+			<xsd:element name="AllocatedIncomeAmt" type="USAmount13DgtType">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Allocated income  amount</Description>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Allocated principal amount -->
+			<xsd:element name="AllocatedPrincipalAmt" type="USAmount13DgtType">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Allocated principal amount</Description>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

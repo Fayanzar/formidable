@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.irs.gov/efile" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.irs.gov/efile" version="1.0">
+	<xsd:annotation>
+		<xsd:documentation>
+			<Description>IRS e-file Schema - IRS Form 1041 Schedule D Capital Gains and Losses</Description>
+			<TaxYear>2026</TaxYear>
+			<MaturityLevel>Final Schema Version RL10A Drop 1</MaturityLevel>
+			<ReleaseDate>May 28 2026</ReleaseDate>
+		</xsd:documentation>
+	</xsd:annotation>
+
+	<xsd:include schemaLocation="../../../Common/efileTypes.xsd"/>
+
+	<!-- ========================================================================= -->
+	<!-- ======================== IRS Form 1041 Schedule D ======================= -->
+	<!-- ========================================================================= -->
+
+	<xsd:element name="IRS1041ScheduleD">
+		<xsd:annotation>
+			<xsd:documentation>IRS Form 1041 Schedule D</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="IRS1041ScheduleDType">
+					<xsd:attributeGroup ref="DocumentAttributes">
+						<xsd:annotation>
+							<xsd:documentation>Common return document attributes</xsd:documentation>
+						</xsd:annotation>
+					</xsd:attributeGroup>
+					<xsd:attribute fixed="IRS1041ScheduleD" name="documentName" type="xsd:string"/>
+
+					<xsd:attribute name="referenceDocumentId" type="IdListType" >
+						<xsd:annotation>
+							<xsd:documentation>List of document ID's of forms, schedules, supporting info. etc. attached to this form</xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+
+					<xsd:attribute name="referenceDocumentName" type="StringType" fixed="IRS8949 UnrealizedAppreciationOfCollectiblesStatement BinaryAttachment"/>
+				</xsd:extension>
+
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="IRS1041ScheduleDType">
+		<xsd:annotation>
+			<xsd:documentation>Content model for Form 1041 Schedule D</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+
+			<xsd:element name="DisposeInvestmentQOFInd" type="BooleanType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Dispose Of Any Investment Qualified Opportunity Fund Indicator</Description>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			
+			<!-- Part I  Short-Term Capital Gains and Losses - Assets Held One Year or Less -->
+
+
+			<!-- Totals for all short-term transactions reported on Form 1099-B or 1099-DA for which basis was reported to the IRS and for which you have no adjustments -->
+			<xsd:element name="TotalSTCGL1099BssRptNoAdjGrp" type="F1041BasisRptNoAdjustmentsType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Totals for all short-term transactions reported on Form 1099-B or 1099-DA for which basis was reported to the IRS and for which you have no adjustments</Description>
+						<LineNumber>1a</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Totals for all transactions reported on Form(s) 8949 with Box A or Box G checked -->
+			<xsd:element name="TotalSTCGL1099ShowsBasisGrp" type="TotalCapitalGainAndLossGrpType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Totals for all transactions reported on Form(s) 8949 with Box A or Box G checked</Description>
+						<LineNumber>1b</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Totals for all transactions reported on Form(s) 8949 with Box B or Box H checked -->
+			<xsd:element name="TotalSTCGL1099NotShowBasisGrp" type="TotalCapitalGainAndLossGrpType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Totals for all transactions reported on Form(s) 8949 with Box B or Box H checked</Description>
+						<LineNumber>2</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Totals for all transactions reported on Form(s) 8949 with Box C or Box I checked -->
+			<xsd:element name="TotalSTCGL1099NotReceivedGrp" type="TotalCapitalGainAndLossGrpType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Totals for all transactions reported on Form(s) 8949 with Box C or Box I checked</Description>
+						<LineNumber>3</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Short-Term Capital Gain Or Loss From Forms Amount -->
+			<xsd:element name="STGainOrLossFromFormsAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Short-Term Capital Gain Or Loss From Forms Amount</Description>
+						<LineNumber>4</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Net Short-Term Gain Or Loss From Schedule K-1 Amount -->
+			<xsd:element name="NetSTGainOrLossFromSchK1Amt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Net Short-Term Gain Or Loss From Schedule K-1 Amount</Description>
+						<LineNumber>5</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Short-Term Capital Loss Carryover Amount -->
+			<xsd:element name="STCapitalLossCarryoverAmt" type="USAmountNNType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Short-Term Capital Loss Carryover Amount</Description>
+						<LineNumber>6</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Net Short-Term Capital Gain Or Loss Amount -->
+			<xsd:element name="NetSTCapitalGainOrLossAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Net Short-Term Capital Gain Or Loss Amount</Description>
+						<LineNumber>7</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Part II  Long-Term Capital Gains And Losses - Assets Held More Than One Year -->
+
+			<!-- Totals for all long-term transactions reported on Form 1099-B or 1099-DA for which basis was reported to the IRS and for which you have no adjustments -->
+			<xsd:element name="TotalLTCGL1099BssRptNoAdjGrp" type="F1041BasisRptNoAdjustmentsType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Totals for all long-term transactions reported on Form 1099-B or 1099-DA for which basis was reported to the IRS and for which you have no adjustments</Description>
+						<LineNumber>8a</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Totals for all transactions reported on Form(s) 8949 with Box D or Box J checked -->
+			<xsd:element name="TotalLTCGL1099ShowsBasisGrp" type="TotalCapitalGainAndLossGrpType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Totals for all transactions reported on Form(s) 8949 with Box D or Box J checked</Description>
+						<LineNumber>8b</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Totals for all transactions reported on Form(s) 8949 with Box E or Box K checked  -->
+			<xsd:element name="TotalLTCGL1099NotShowBasisGrp" type="TotalCapitalGainAndLossGrpType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Totals for all transactions reported on Form(s) 8949 with Box E or Box K checked </Description>
+						<LineNumber>9</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Totals for all transactions reported on Form(s) 8949 with Box F or Box L checked -->
+			<xsd:element name="TotalLTCGL1099NotReceivedGrp" type="TotalCapitalGainAndLossGrpType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Totals for all transactions reported on Form(s) 8949 with Box F or Box L checked</Description>
+						<LineNumber>10</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Long-Term Capital Gain Or Loss From Forms Amount -->
+			<xsd:element name="LTGainOrLossFromFormsAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Long-Term Capital Gain Or Loss From Forms Amount</Description>
+						<LineNumber>11</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Net Long-Term Gain Or Loss From Schedule K-1 Amount -->
+			<xsd:element name="NetLTGainOrLossFromSchK1Amt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Net Long-Term Gain Or Loss From Schedule K-1 Amount</Description>
+						<LineNumber>12</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Capital Gain Distributions Amount -->
+			<xsd:element name="CapitalGainDistributionsAmt" type="USAmountNNType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Capital Gain Distributions Amount</Description>
+						<LineNumber>13</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Form 4797 Gain Loss Amount -->
+			<xsd:element name="Form4797GainOrLossAmt" type="USAmountNNType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Form 4797 Gain Loss Amount</Description>
+						<LineNumber>14</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Long-Term Capital Loss Carryover Amount -->
+			<xsd:element name="LTCapitalLossCarryoverAmt" type="USAmountNNType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Long-Term Capital Loss Carryover Amount</Description>
+						<LineNumber>15</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Net Long-Term Capital Gain Or Loss Amount -->
+			<xsd:element name="NetLTCapitalGainOrLossAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Net Long-Term Capital Gain Or Loss Amount</Description>
+						<LineNumber>16</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Part III  Summary of Parts I and II -->
+
+			<!-- Lines 17 to 19, Column (1) Beneficiaries' Capital Gain Or Loss Group -->
+			<xsd:element name="BeneficiariesCapGainOrLossGrp" type="SchDPartIIIType" minOccurs="0" />
+
+			<!-- Lines 17 to 19, Column (2) Estate Or Trust Capital Gain Or Loss Group -->
+			<xsd:element name="EstateOrTrustCapGainOrLossGrp" type="SchDPartIIIType" minOccurs="0" />
+
+			<!-- Lines 17 to 19, Column (3) Total Capital Gain Or Loss Group -->
+			<xsd:element name="TotalCapitalGainOrLossGrp" type="SchDPartIIIType" minOccurs="0" />
+
+			<!-- Part IV  Capital Loss Limitation -->
+
+			<!-- Capital Loss Limitation Amount -->
+			<xsd:element name="CapitalLossLimitationAmt" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Capital Loss Limitation Amount</Description>
+						<LineNumber>20</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="USAmountNNType">
+						<xsd:maxInclusive value="3000"></xsd:maxInclusive>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+
+			<!-- Part V  Tax Computation Using Maximum Capital Gains Rates -->
+
+			<!-- Taxable Income Amount -->
+			<xsd:element name="TaxableIncomeAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Taxable Income Amount</Description>
+						<LineNumber>21</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Smaller Gain Amount -->
+			<xsd:element name="SmallerGainAmt" type="USAmountNNType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Smaller Gain Amount</Description>
+						<LineNumber>22</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Qualified Dividends Estate Trust Amount -->
+			<xsd:element name="QlfyDividendsEstateTrustAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Qualified Dividends Estate Trust Amount</Description>
+						<LineNumber>23</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Gain Plus Dividends Amount -->
+			<xsd:element name="GainPlusDividendsAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Gain Plus Dividends Amount</Description>
+						<LineNumber>24</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Investment Income Election Amount -->
+			<xsd:element name="InvestmentIncomeElectionAmt" type="USAmountNNType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Investment Income Election Amount</Description>
+						<LineNumber>25</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Gain Less Included Amount -->
+			<xsd:element name="GainLessIncludedAmt" type="USAmountNNType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Gain Less Included Amount</Description>
+						<LineNumber>26</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Taxable Income Less Gain Amount -->
+			<xsd:element name="TaxableIncomeLessGainAmt" type="USAmountNNType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Taxable Income Less Gain Amount</Description>
+						<LineNumber>27</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Smaller Taxable Income Or Allowed Amount -->
+			<xsd:element name="SmallerTaxableIncmOrAllowedAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Smaller Taxable Income Or Allowed Amount</Description>
+						<LineNumber>28</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Smaller Taxable Income Less Gain Or Taxable Income Or Allowed Amount -->
+			<xsd:element name="SmllrTxiLessGainOrTxiOrAllwAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Smaller Taxable Income Less Gain Or Taxable Income Or Allowed Amount</Description>
+						<LineNumber>29</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Difference Of Smaller Amount -->
+			<xsd:element name="DiffOfSmallerAmt" type="USAmountNNType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Difference Of Smaller Amount</Description>
+						<LineNumber>30</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Smaller Taxable Income Or Net Amount -->
+			<xsd:element name="SmallerTaxableIncomeOrNetAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Smaller Taxable Income Or Net Amount</Description>
+						<LineNumber>31</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Net Income Minus Smaller Amount -->
+			<xsd:element name="NetIncomeMinusSmallerAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Net Income Minus Smaller Amount</Description>
+						<LineNumber>32</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Smaller Of Taxable Income Amount Or Other Allowed Amount -->
+			<xsd:element name="SmllrTxblIncmOrOthAllowedAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Smaller Of Taxable Income Amount Or Other Allowed Amount</Description>
+						<LineNumber>33</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Taxable Income Less Gain Amount Plus Difference Of Smaller Amount -->
+			<xsd:element name="TxiLessGainPlusDiffOfSmllAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Taxable Income Less Gain Amount Plus Difference Of Smaller Amount</Description>
+						<LineNumber>34</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Smaller Taxable Income Or Allowed Less Smaller Amount -->
+			<xsd:element name="SmllrTxiOrAllwLessSmllrAmt" type="USAmountNNType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Smaller Taxable Income Or Allowed Less Smaller Amount</Description>
+						<LineNumber>35</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Smaller Of Calculated Amount -->
+			<xsd:element name="SmallerOfCalcAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Smaller Of Calculated Amount</Description>
+						<LineNumber>36</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Smaller Times Percent Amount -->
+			<xsd:element name="SmallerTimesPercentAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Smaller Times Percent Amount</Description>
+						<LineNumber>37</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Line 38, use the value from Line 31 'SmallerTaxableIncomeOrNetAmt' -->
+
+			<!-- Difference Of Smaller Plus Smaller Of Calculated Amount -->
+			<xsd:element name="DiffOfSmllrPlusSmllrOfCalcAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Difference Of Smaller Plus Smaller Of Calculated Amount</Description>
+						<LineNumber>39</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Net Smaller Amount -->
+			<xsd:element name="NetSmallerAmt" type="USAmountNNType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Net Smaller Amount</Description>
+						<LineNumber>40</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Net Times Percent Amount -->
+			<xsd:element name="NetTimesPercentAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Net Times Percent Amount</Description>
+						<LineNumber>41</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Net Gains Tax Amount -->
+			<xsd:element name="NetGainsTaxAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Net Gains Tax Amount</Description>
+						<LineNumber>42</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Tax Plus Time Percent Amount -->
+			<xsd:element name="TaxPlusTimePercentAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Tax Plus Time Percent Amount</Description>
+						<LineNumber>43</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Tax On Taxable Income Amount -->
+			<xsd:element name="TaxOnTaxableIncomeAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Tax On Taxable Income Amount</Description>
+						<LineNumber>44</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Tax Amount -->
+			<xsd:element name="TaxAmt" type="USAmountNNType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Tax Amount</Description>
+						<LineNumber>45</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<!-- Type for Repeating Table Rows in Part I Line 1a (Short-Term) and Part II Line 8a (Long-Term) -->
+	<xsd:complexType name="F1041BasisRptNoAdjustmentsType">
+		<xsd:sequence>
+
+			<!-- Total Proceeds Sales Price Amount -->
+			<xsd:element name="TotalProceedsSalesPriceAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Total Proceeds Sales Price Amount</Description>
+						<LineNumber>1a(d) or 8a(d)</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Total Cost Or Other Basis Amount -->
+			<xsd:element name="TotalCostOrOtherBasisAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Total Cost Or Other Basis Amount</Description>
+						<LineNumber>1a(e) or 8a(e)</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Total Gain Or Loss Amount -->
+			<xsd:element name="TotalGainOrLossAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Total Gain Or Loss Amount</Description>
+						<LineNumber>1a(h) or 8a(h)</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+		</xsd:sequence>
+	</xsd:complexType>
+
+
+	<!-- Type for Repeating Table Rows in Part I Line 1b, 2, and 3 (Short-Term) and Part II Line 8b, 9, and 10 (Long-Term) -->
+	<xsd:complexType name="TotalCapitalGainAndLossGrpType">
+		<xsd:sequence>
+
+			<!-- Total Proceeds Sales Price Amount -->
+			<xsd:element name="TotalProceedsSalesPriceAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Total Proceeds Sales Price Amount</Description>
+						<LineNumber>1b(d), 2(d), 3(d), 8b(d), 9(d), or 10(d)</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Total Cost Or Other Basis Amount -->
+			<xsd:element name="TotalCostOrOtherBasisAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Total Cost Or Other Basis Amount</Description>
+						<LineNumber>1b(e), 2(e), 3(e), 8b(e), 9(e), or 10(e)</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Total Adjustments To Gain Or Loss Amount -->
+			<xsd:element name="TotAdjustmentsToGainOrLossAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Total Adjustments To Gain Or Loss Amount</Description>
+						<LineNumber>1b(g), 2(g), 3(g), 8b(g), 9(g), or 10(g)</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Total Gain Or Loss Amount -->
+			<xsd:element name="TotalGainOrLossAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Total Gain Or Loss Amount</Description>
+						<LineNumber>1b(h), 2(h), 3(h), 8b(h), 9(h), or 10(h)</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<!-- Type for Part III Lines 17 to 19, Columns (1) to (3) -->
+	<xsd:complexType name="SchDPartIIIType">
+		<xsd:sequence>
+
+			<!-- Net Short-Term Capital Gain Or Loss Amount -->
+			<xsd:element name="NetSTCapitalGainOrLossAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Net Short-Term Capital Gain Or Loss Amount</Description>
+						<LineNumber>17, Columns (1) to (3)</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="NetLongTermGainOrLossGrp" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<!-- Total For Year Amount -->
+						<xsd:element name="TotalForYearAmt" type="USAmountType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>
+									<Description>Total For Year Amount</Description>
+									<LineNumber>18a, Columns (1) to (3)</LineNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+
+						<!-- Unrecaptured Section 1250 Gain Amount -->
+						<xsd:element name="UnrecapturedSection1250GainAmt" type="USAmountType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>
+									<Description>Unrecaptured Section 1250 Gain Amount</Description>
+									<LineNumber>18b, Columns (1) to (3)</LineNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+
+						<!-- Collectibles 28-Percent Gain Amount -->
+						<xsd:element name="Collectibles28PercentGainAmt" type="USAmountType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>
+									<Description>Collectibles 28-Percent Gain Amount</Description>
+									<LineNumber>18c, Columns (1) to (3)</LineNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<!-- Total Net Gain Or Loss Amount -->
+			<xsd:element name="TotalNetGainOrLossAmt" type="USAmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Total Net Gain Or Loss Amount</Description>
+						<LineNumber>19, Columns (1) to (3)</LineNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

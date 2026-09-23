@@ -1,0 +1,1000 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.irs.gov/efile" xmlns="http://www.irs.gov/efile" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+
+	<xsd:annotation>
+		<xsd:documentation>
+			<Description>IRS e-file Tax Exempt and Government Entities Schema - Return Data Schema for 5227 Return</Description>
+			<TaxYear>2026</TaxYear>
+			<MaturityLevel>Final Schema Version RL10A Drop 1</MaturityLevel>
+			<ReleaseDate>May 28 2026</ReleaseDate>			
+		</xsd:documentation>
+	</xsd:annotation>
+
+	<xsd:include schemaLocation="../../Common/efileTypes.xsd" />
+	<xsd:include schemaLocation="../../Common/BinaryAttachment.xsd" />
+
+	<xsd:include schemaLocation="IRS5227/IRS5227.xsd" />
+
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS926/IRS926.xsd" />
+	<xsd:include schemaLocation="../../IndividualIncomeTax/Common/IRS1040ScheduleC/IRS1040ScheduleC.xsd" />
+	<xsd:include schemaLocation="../../IndividualIncomeTax/Common/IRS1040ScheduleE/IRS1040ScheduleE.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS1040ScheduleF/IRS1040ScheduleF.xsd" />
+	<xsd:include schemaLocation="../../EstateTrustIncomeTax/1041/IRS1041ScheduleD/IRS1041ScheduleD.xsd" />
+	<xsd:include schemaLocation="../../EstateTrustIncomeTax/1041/IRS1041ScheduleK1/IRS1041ScheduleK1.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS4562/IRS4562.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS4684/IRS4684.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS4797/IRS4797.xsd" />
+	<xsd:include schemaLocation="../../IndividualIncomeTax/Common/IRS4952/IRS4952.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS6198/IRS6198.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS6781/IRS6781.xsd" />
+	<xsd:include schemaLocation="../../Shared/IRS7205/IRS7205.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS8275/IRS8275.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS8275R/IRS8275R.xsd" />
+	<xsd:include schemaLocation="../../IndividualIncomeTax/Common/IRS8582/IRS8582.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS8621/IRS8621.xsd" />
+	<xsd:include schemaLocation="../../IndividualIncomeTax/Common/IRS8829/IRS8829.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS8886/IRS8886.xsd" />
+	<xsd:include schemaLocation="../../IndividualIncomeTax/Common/IRS8949/IRS8949.xsd" />
+	<xsd:include schemaLocation="../../Shared/IRS8995/IRS8995.xsd" />
+	<xsd:include schemaLocation="../../Shared/IRS8995A/IRS8995A.xsd" />
+	<xsd:include schemaLocation="../../Shared/IRS8995AScheduleA/IRS8995AScheduleA.xsd" />
+	<xsd:include schemaLocation="../../Shared/IRS8995AScheduleB/IRS8995AScheduleB.xsd" />
+	<xsd:include schemaLocation="../../Shared/IRS8995AScheduleC/IRS8995AScheduleC.xsd" />
+	<xsd:include schemaLocation="../../Shared/IRS8995AScheduleD/IRS8995AScheduleD.xsd" />
+	<xsd:include schemaLocation="../../Shared/IRS8997/IRS8997.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRSFormT/IRSFormT.xsd" />
+
+	<!-- Common Dependencies (supporting info, schedules, computations, and such) -->
+	<xsd:include schemaLocation="../Common/Dependencies/AmendedReturnChanges2.xsd" />		
+	<xsd:include schemaLocation="../Common/Dependencies/GeneralExplanationAttachment.xsd" />		
+	<xsd:include schemaLocation="../Common/Dependencies/LoansFromOfficersSchedule.xsd" />		
+	<xsd:include schemaLocation="../Common/Dependencies/MortgagesAndNotesPayableSchedule.xsd" />		
+	<xsd:include schemaLocation="../Common/Dependencies/OtherNotesLoansReceivableLongSchedule.xsd" />		
+	<xsd:include schemaLocation="../Common/Dependencies/OtherReceivablesFromOfficersSchedule.xsd" />		
+	<xsd:include schemaLocation="../Common/Dependencies/ReasonableCauseExplanation.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/Dependencies/50YearADSDeductionStatement.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/Dependencies/50YearGDSDeductionStatement.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/Dependencies/AmortizationElectionStatement.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/Dependencies/DeductionsOtherCategoriesSchedule.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/Dependencies/ForeignGrossIncomeAtCorpLevelOtherCatSchedule.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/Dependencies/ForeignTaxSchedule.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/Dependencies/ForeignTransactionStatement.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/Dependencies/GeneralDependencySmall.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/Dependencies/GrossIncomeSourcedAtShareholderLevelSchedule.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/Dependencies/ItemizedOtherCreditsSchedule.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/Dependencies/LowIncomeHousingCreditStatement.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/Dependencies/MixedStraddleAccountElectionStatement.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/Dependencies/OtherAdjustmentsAndTaxPreferenceItemsSchedule.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/Dependencies/OtherRecaptureCreditsSchedule.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/Dependencies/ReductionInTaxesSchedule.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/Dependencies/Section168f1PropertyExplanationStatement.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/Dependencies/Section42j5Schedule.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/Dependencies/SmallEthanolProducerCreditStatement.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/Dependencies/SupplementalInformationStatement.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/Dependencies/UnrecapturedSection1250GainSchedule.xsd" />
+	<xsd:include schemaLocation="../../IndividualIncomeTax/Common/Dependencies/Elect1141110gFlowThruEntStatement.xsd" />
+	<xsd:include schemaLocation="../../IndividualIncomeTax/Common/Dependencies/Form1098DifferenceStatement.xsd" />
+	<xsd:include schemaLocation="../../IndividualIncomeTax/Common/Dependencies/Form1098RecipientNameAndAddressStatement.xsd" />
+	<xsd:include schemaLocation="../../IndividualIncomeTax/Common/Dependencies/UnrealizedAppreciationOfCollectiblesStatement.xsd" />
+
+	<!-- Includes for 926 (supporting info, schedules, computations, and such) -->
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS926/BasicAdjustmentUnderSection367a5Statement.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS926/ExchangeGainRecognizedUnderSection987TransferStatement.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS926/GainRecognizedUnderSection904f3OnTransferStatement.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS926/GainRecognizedUnderSection904f5FOnTransferStatement.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS926/RecaptureUnderSection1503dOnTransferStatement.xsd" />
+
+	<!-- Includes for 990PF (supporting info, schedules, computations, and such) -->
+	<xsd:include schemaLocation="../TEGE990PF/IRS990PF/ExpenditureResponsibilityStatement.xsd" />
+	<xsd:include schemaLocation="../TEGE990PF/IRS990PF/InvestmentsCorpBondsSchedule.xsd" />
+	<xsd:include schemaLocation="../TEGE990PF/IRS990PF/InvestmentsCorpStockSchedule.xsd" />
+	<xsd:include schemaLocation="../TEGE990PF/IRS990PF/InvestmentsGovtObligationsSchedule.xsd" />
+	<xsd:include schemaLocation="../TEGE990PF/IRS990PF/InvestmentsLandSchedule2.xsd" />
+	<xsd:include schemaLocation="../TEGE990PF/IRS990PF/InvestmentsOtherSchedule2.xsd" />
+	<xsd:include schemaLocation="../TEGE990PF/IRS990PF/LandEtcSchedule2.xsd" />
+	<xsd:include schemaLocation="../TEGE990PF/IRS990PF/OtherAssetsSchedule.xsd" />
+	<xsd:include schemaLocation="../TEGE990PF/IRS990PF/OtherLiabilitiesSchedule.xsd" />
+	<xsd:include schemaLocation="../TEGE990PF/IRS990PF/OtherNotesLoansReceivableShortSchedule2.xsd" />
+
+	<!-- Includes for 1040 Schedule C (supporting info, schedules, computations, and such) -->
+	<xsd:include schemaLocation="../../IndividualIncomeTax/Common/IRS1040ScheduleC/BeginningOfYearInventoryDifferenceStatement.xsd" />
+	<xsd:include schemaLocation="../../IndividualIncomeTax/Common/IRS1040ScheduleC/ChangeInValuationsStatement.xsd" />
+	<xsd:include schemaLocation="../../IndividualIncomeTax/Common/IRS1040ScheduleC/OtherMethodUsedToValueClosingInventoryStatement.xsd" />
+
+	<!-- Includes for 1040 Schedule F (supporting info, schedules, computations, and such) -->
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS1040ScheduleF/CCCLoanDetailAccrualMethodStatement.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS1040ScheduleF/CCCLoanDetailCashMethodStatement.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS1040ScheduleF/ExplanationOfAdditionalInterestDeductionStatement.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS1040ScheduleF/Form1098RecipientsStatement.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS1040ScheduleF/PostponementOfCropInsuranceAndDisasterPaymentsStatement.xsd" />
+
+	<!-- Includes for 1041 Schedule K-1 (supporting info, schedules, computations, and such) -->
+	<xsd:include schemaLocation="../../EstateTrustIncomeTax/1041/IRS1041ScheduleK1/Collectibles28PctRtGainExplanation.xsd" />
+	<xsd:include schemaLocation="../../EstateTrustIncomeTax/1041/IRS1041ScheduleK1/DirectlyApportionedDeductionsExplanation.xsd" />
+	<xsd:include schemaLocation="../../EstateTrustIncomeTax/1041/IRS1041ScheduleK1/EstateTaxDeductionsExplanation.xsd" />
+	<xsd:include schemaLocation="../../EstateTrustIncomeTax/1041/IRS1041ScheduleK1/FinalYearDeductionsExplanation.xsd" />
+	<xsd:include schemaLocation="../../EstateTrustIncomeTax/1041/IRS1041ScheduleK1/InterestIncomeExplanation.xsd" />
+	<xsd:include schemaLocation="../../EstateTrustIncomeTax/1041/IRS1041ScheduleK1/NetLongTermCapitalGainExplanation.xsd" />
+	<xsd:include schemaLocation="../../EstateTrustIncomeTax/1041/IRS1041ScheduleK1/NetRentalRealEstateIncomeExplanation.xsd" />
+	<xsd:include schemaLocation="../../EstateTrustIncomeTax/1041/IRS1041ScheduleK1/NetShortTermCapitalGainExplanation.xsd" />
+	<xsd:include schemaLocation="../../EstateTrustIncomeTax/1041/IRS1041ScheduleK1/OrdinaryBusinessIncomeExplanation.xsd" />
+	<xsd:include schemaLocation="../../EstateTrustIncomeTax/1041/IRS1041ScheduleK1/OrdinaryDividendExplanation.xsd" />
+	<xsd:include schemaLocation="../../EstateTrustIncomeTax/1041/IRS1041ScheduleK1/OtherPortfolioAndNonBusinessIncomeExplanation.xsd" />
+	<xsd:include schemaLocation="../../EstateTrustIncomeTax/1041/IRS1041ScheduleK1/OtherRentalIncomeExplanation.xsd" />
+	<xsd:include schemaLocation="../../EstateTrustIncomeTax/1041/IRS1041ScheduleK1/QualifiedDividendExplanation.xsd" />
+	<xsd:include schemaLocation="../../PartnershipIncome/Part1065/IRS1065ScheduleK1/AgriBiodieselProducerCreditStatement.xsd" />
+	<xsd:include schemaLocation="../../PartnershipIncome/Part1065/IRS1065/DomesticProductionActivityStatement.xsd" />
+	<xsd:include schemaLocation="../../PartnershipIncome/Part1065/IRS1065ScheduleK1/RecaptureOfInvestmentCreditStatement.xsd" />
+	<xsd:include schemaLocation="../../PartnershipIncome/Part1065/IRS1065ScheduleK1/RenewableElectricityAndRefinedCoalProductionCreditStatement.xsd" />
+
+	<!-- Includes for 4684 (supporting info, schedules, computations, and such) -->
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS4684/DeductibleLossComputationStmt.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS4684/OriginalOrAmendedReturnStatement.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS4684/UnexcludedExcessGainStatement.xsd" />
+
+	<!-- Includes for 4797 (supporting info, schedules, computations, and such) -->
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS4797/SecuritiesOrCommoditiesHeldByATraderMarkToMarket.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS4797/SmallBusinessInvestmentCompanyStockStatement.xsd" />
+
+	<!-- Includes for 5227 (supporting info, schedules, computations, and such) -->
+	<xsd:include schemaLocation="IRS5227/Form5227Elect1141110gFlowThroughEntitiesStatement.xsd" />
+	<xsd:include schemaLocation="IRS5227/RecipientShareTotalUnitrustDollarPercentageStatement.xsd" />
+	<xsd:include schemaLocation="IRS5227/TrustAccountingIncomeStatement.xsd" />
+
+	<!-- Includes for 6198 (supporting info, schedules, computations, and such) -->
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS6198/Form4797GainsOrLossesForAtRiskLmtStatement.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS6198/OtherFormOrSchGainsOrLossesForAtRiskLmtStatement.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS6198/SchDGainsOrLossesForAtRiskLmtStatement.xsd" />
+
+	<!-- Includes for 6781 (supporting info, schedules, computations, and such) -->
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS6781/ExplanationOfForm1099BAdjustmentsSchedule.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS6781/ListOfForeignCurrencyContractsStatement.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS6781/ShortLongTermGainsSchedule.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS6781/ShortLongTermLossesSchedule.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS6781/StraddlesAndComponentsSchedule.xsd" />
+
+	<!-- Includes for 8621 (supporting info, schedules, computations, and such) -->
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS8621/DeemedDivElectRespectFormerPFICStmt.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS8621/DeemedDivElectSec1297ePFICStmt.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS8621/DeemedDividendElectionStatement.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS8621/QEFDistributionStatement.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS8621/ShareholdersStockOwnershipStmt.xsd" />
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS8621/TaxationOfExcessDistributionStmt.xsd" />
+
+	<!-- Includes for 8829 (supporting info, schedules, computations, and such) -->
+	<xsd:include schemaLocation="../../IndividualIncomeTax/Common/IRS8829/CostOrOtherBasisOfAdditionsAndImprovementsSchedule.xsd" />
+	<xsd:include schemaLocation="../../IndividualIncomeTax/Common/IRS8829/DepreciationComputationSchedule.xsd" />
+	<xsd:include schemaLocation="../../IndividualIncomeTax/Common/IRS8829/SpecialComputationForCertainDaycareFacilitiesStatement.xsd" />
+
+	<!-- Includes for 8865 (supporting info, schedules, computations, and such) -->
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS8865/BadDebtStatement.xsd" />
+
+	<!-- Includes for 8886 (supporting info, schedules, computations, and such) -->
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRS8886/ContinuationOfForm8886ExpectedTaxBenefitsExplanation.xsd" />
+
+	<!-- Includes for 8949 (supporting info, schedules, computations, and such) -->
+	<xsd:include schemaLocation="../../IndividualIncomeTax/Common/IRS8949/BasisOtherThanActualCostOfPropertyStatement.xsd" />
+
+	<!-- Includes for Form T (supporting info, schedules, computations, and such) -->
+	<xsd:include schemaLocation="../../CorporateIncomeTax/Common/IRSFormT/DedExpendForOtherSilviculturalActivitiesSch.xsd" />
+
+
+	<!-- Return 5227 -->
+	<xsd:element name="ReturnData">
+		<xsd:annotation>
+			<xsd:documentation>5227 Return Contents</xsd:documentation>
+		</xsd:annotation>
+
+		<xsd:complexType>
+			<xsd:sequence>
+
+				<!-- Form 5227 -->
+				<xsd:element ref="IRS5227"/>
+
+				<!-- Form 926 -->
+				<xsd:element ref="IRS926" minOccurs="0" maxOccurs="unbounded"/>
+
+				<!-- Form 1040 Schedule C -->
+				<xsd:element ref="IRS1040ScheduleC" minOccurs="0" maxOccurs="unbounded"/>
+
+				<!-- Form 1040 Schedule E -->
+				<xsd:element ref="IRS1040ScheduleE" minOccurs="0"/>
+
+				<!-- Form 1040 Schedule F -->
+				<xsd:element ref="IRS1040ScheduleF" minOccurs="0" maxOccurs="unbounded"/>
+
+				<!-- Form 1041 Schedule D -->
+				<xsd:element ref="IRS1041ScheduleD" minOccurs="0"/>
+
+				<!-- Form 1041 Schedule K-1 -->
+				<xsd:element ref="IRS1041ScheduleK1" minOccurs="0" maxOccurs="unbounded"/>
+
+				<!-- Form 4562  -->
+				<xsd:element ref="IRS4562" minOccurs="0" maxOccurs="unbounded"/>
+
+				<!-- Form 4684 -->
+				<xsd:element ref="IRS4684" minOccurs="0" maxOccurs="unbounded"/>
+
+				<!-- Form 4797 -->
+				<xsd:element ref="IRS4797" minOccurs="0" maxOccurs="unbounded"/>
+
+				<!-- Form 4952 -->
+				<xsd:element ref="IRS4952" minOccurs="0"/>
+
+				<!-- Form 6198 -->
+				<xsd:element ref="IRS6198" minOccurs="0" maxOccurs="unbounded"/>
+
+				<!-- Form 6781 -->
+				<xsd:element ref="IRS6781" minOccurs="0" maxOccurs="unbounded"/>
+
+				<!-- Form 7205 -->
+				<xsd:element ref="IRS7205" minOccurs="0" maxOccurs="unbounded"/>
+
+				<!-- Form 8275 -->
+				<xsd:element ref="IRS8275" minOccurs="0" maxOccurs="unbounded"/>
+
+				<!-- Form 8275-R -->
+				<xsd:element ref="IRS8275R" minOccurs="0" maxOccurs="unbounded"/>
+
+				<!-- Form 8582 -->
+				<xsd:element ref="IRS8582" minOccurs="0"/>
+
+				<!-- Form 8621 -->
+				<xsd:element ref="IRS8621" minOccurs="0" maxOccurs="unbounded"/>
+
+				<!-- Form 8829 -->
+				<xsd:element ref="IRS8829" minOccurs="0" maxOccurs="unbounded"/>
+
+				<!-- Form 8886 -->
+				<xsd:element ref="IRS8886" minOccurs="0" maxOccurs="unbounded"/>
+
+				<!-- Form 8949  -->
+				<xsd:element ref="IRS8949" minOccurs="0" maxOccurs="unbounded"/>
+
+				<!-- Form 8995 -->
+				<xsd:element ref="IRS8995" minOccurs="0"/>
+
+				<!-- Form 8995-A -->
+				<xsd:element ref="IRS8995A" minOccurs="0"/>
+
+				<!-- Form 8995-A Schedule A -->
+				<xsd:element ref="IRS8995AScheduleA" minOccurs="0"/>
+				
+				<!-- Form 8995-A Schedule B -->
+				<xsd:element ref="IRS8995AScheduleB" minOccurs="0"/>
+				
+				<!-- Form 8995-A Schedule C -->
+				<xsd:element ref="IRS8995AScheduleC" minOccurs="0"/>
+				
+				<!-- Form 8995-A Schedule D -->
+				<xsd:element ref="IRS8995AScheduleD" minOccurs="0"/>
+
+				<!-- Form 8997 -->
+				<xsd:element ref="IRS8997" minOccurs="0"/>
+
+				<!-- Form T (Timber) -->
+				<xsd:element ref="IRSFormT" minOccurs="0" maxOccurs="unbounded"/>
+
+
+				<!-- Dependencies -->
+
+				<!-- Form 926 statement -->
+				<xsd:element ref="BscAdjUnderSect367a5Stmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Basic Adjustment Under Section 367(a)(5) Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 926 statement -->
+				<xsd:element ref="ExchGainRcgnzSect987TrnsfrStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Exchange Gain Recognized Under Sec 987 Transfer Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 926 statement -->
+				<xsd:element ref="GainRcgnzSect904f3TrnsfrStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Gain Recognized Under Sec 904(f)(3) on Transfer Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 926 statement -->
+				<xsd:element ref="GainRcgnzSect904f5FTrnsfrStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Gain Recognized Under Sec 904(f)(5)(F) on Transfer Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 926 statement -->
+				<xsd:element ref="RecaptureSect1503dTrnsfrStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Recapture Under Sec 1503(d) on Transfer Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1040 Schedule C statement -->
+				<xsd:element ref="BeginningOfYrInvntryDiffStmt" minOccurs="0" maxOccurs="8">
+					<xsd:annotation>
+						<xsd:documentation>Beginning of year inventory difference statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1040 Schedule C statement -->
+				<xsd:element ref="ChangeInValuationsStatement" minOccurs="0" maxOccurs="8">
+					<xsd:annotation>
+						<xsd:documentation>Change in valuations statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1040 Schedule C statement (common) -->
+				<xsd:element ref="Form1098DifferenceStatement" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Form 1098 difference statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1040 Schedule C statement (common) -->
+				<xsd:element ref="Form1098RecpntNMAddrStatement" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Form 1098 recipient name and address statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1040 Schedule C statement -->
+				<xsd:element ref="OthMthdUsedToVlClsInvntryStmt" minOccurs="0" maxOccurs="8">
+					<xsd:annotation>
+						<xsd:documentation>Other method used to value closing inventory statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1040 Schedule F statement -->
+				<xsd:element ref="CCCLoanDetailAccrualMethodStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Commodity Credit Corporation Loan Detail Accrual Method Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1040 Schedule F statement -->
+				<xsd:element ref="CCCLoanDetailCashMethodStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Commodity Credit Corporation Loan Detail Cash Method Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1040 Schedule F statement -->
+				<xsd:element ref="ExplnOfAddnlInterestDedStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Explanation of Additional Interest Deduction Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1040 Schedule F statement -->
+				<xsd:element ref="Form1098RecipientsStatement" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Form 1098 Recipients Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1040 Schedule F statement -->
+				<xsd:element ref="PostponementCropInsDsstrStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Postponement Of Crop Insurance and Disaster Payments Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule D statement (common) -->
+				<xsd:element ref="UnrlzdApprcnCollectiblesStmt" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>Unrealized Appreciation Of Collectibles Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 statement -->
+				<xsd:element ref="AgriBiodieselProducerCrStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Agri-biodiesel Producer Credit Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 statement -->
+				<xsd:element ref="Collectibles28PctRtGainExpln" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Collectibles 28 Percent Rate Gain Explanation</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 statement -->
+				<xsd:element ref="DirectlyApportionedDedExpln" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Directly Apportioned Deductions Explanation</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 statement -->
+				<xsd:element ref="DomesticProductionActivityStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Domestic Production Activity Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 statement -->
+				<xsd:element ref="Elect1141110gFlowThruEntStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Election of Regulations Section 1.1411-10(g) Flow-Through Entities Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 statement -->
+				<xsd:element ref="EstateTaxDeductionsExplanation" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Estate Tax Deductions Explanation</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 statement -->
+				<xsd:element ref="FinalYearDeductionsExplanation" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Final Year Deductions Explanation</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 schedule -->
+				<xsd:element ref="ForeignTaxSchedule" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Foreign Tax Schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 statement -->
+				<xsd:element ref="ForeignTransactionStatement" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Foreign Transaction Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 schedule -->
+				<xsd:element ref="FrgnGroIncmCorpLvlOtherCatSch" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Foreign gross income at corporate level other categories schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 schedule -->
+				<xsd:element ref="GrossIncmSourcedAtShrLevelSch" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Gross income sourced at shareholder level schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 statement -->
+				<xsd:element ref="InterestIncomeExplanation" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Interest Income Explanation</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 schedule -->
+				<xsd:element ref="ItemizedOtherCreditsSchedule" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Itemized Other Credits Schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 statement -->
+				<xsd:element ref="LowIncomeHousingCreditStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Low income housing credit statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 statement -->
+				<xsd:element ref="NetLongTermCapitalGainExpln" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Net Long-Term Capital Gain Explanation</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 statement -->
+				<xsd:element ref="NetRentalRealEstateIncmExpln" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Net Rental Real Estate Income Explanation</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 statement -->
+				<xsd:element ref="NetShortTermCapitalGainExpln" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Net Short-Term Capital Gain Explanation</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 statement -->
+				<xsd:element ref="OrdinaryBusIncomeExplanation" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Ordinary Business Income Explanation</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 statement -->
+				<xsd:element ref="OrdinaryDividendExplanation" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Ordinary Dividends Explanation</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 schedule -->
+				<xsd:element ref="OtherAdjAndTaxPrefItemsSch" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Other adjustments and tax preference items schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 schedule -->
+				<xsd:element ref="OtherRecaptureCreditsSchedule" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Other Recapture Credits Schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 statement -->
+				<xsd:element ref="OtherRentalIncomeExplanation" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Other Rental Income Explanation</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 statement -->
+				<xsd:element ref="OthPrtflNonBusinessIncmExpln" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Other Portfolio and NonBusiness Income Explanation</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 statement -->
+				<xsd:element ref="QualifiedDividendExplanation" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Qualified Dividends Explanation</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 statement -->
+				<xsd:element ref="RecaptureInvestmentCreditStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Recapture Of Investment Credit Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 schedule -->
+				<xsd:element ref="ReductionInTaxesSchedule" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Reduction in taxes schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 statement -->
+				<xsd:element ref="RnwblElecRefinedCoalProdCrStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Renewable Electricity And Refined Coal Production Credit Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 schedule -->
+				<xsd:element ref="Section42j5Schedule" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Section 42(j)(5) Schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 statement -->
+				<xsd:element ref="SmallEthanolProducerCreditStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Small Ethanol Producer Credit Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 statement -->
+				<xsd:element ref="SupplementalInfoStatement" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Supplemental Information Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 1041 Schedule K-1 schedule -->
+				<xsd:element ref="UnrecapturedSection1250GainSch" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Unrecaptured sectiion 1250 gain schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 4562 statement -->
+				<xsd:element ref="ADS50YearDeductionStatement" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>50 year ADS deduction statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 4562 statement -->
+				<xsd:element ref="GDS50YearDeductionStatement" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>50 year GDS deduction statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 4562 statement -->
+				<xsd:element ref="AmortizationElectionStatement" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Amortization election statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 4562 statement -->
+				<xsd:element ref="Section168f1PropertyStatement" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Section 168(f)(1) property explanation statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 4684 statement -->
+				<xsd:element ref="DeductibleLossComputationStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Deductible loss computation statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 4684 statement -->
+				<xsd:element ref="UnexcludedExcessGainStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Unexcluded Excess Gain Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				
+				<!-- Form 4684 statement -->
+				<xsd:element ref="OriginalOrAmendedRtnStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Original Or Amended Return Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 4797 statement -->
+				<xsd:element ref="SecOrCommoditiesHeldByTrader" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Securities or Commodities Held by a Trader - Mark-To-Market Election</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 4797 statement -->
+				<xsd:element ref="SmallBusInvstCompanyStockStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Small Business Investment Company Stock Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 5227 statement -->
+				<xsd:element ref="AmendedReturnChanges2" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>Amended Return Changes 2</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 5227 schedule -->
+				<xsd:element ref="DedOtherCategoriesSchedule" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Deductions other categories schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 5227 statement -->
+				<xsd:element ref="ExpenditureResponsibilityStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Expenditure Responsibility Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 5227 statement -->
+				<xsd:element ref="Frm5227Elect1141110gFlowStmt" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>Form 5227 Election 1141110g Flow Through Entities Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 5227 attachment -->
+				<xsd:element ref="GeneralExplanationAttachment" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>General explanation attachment</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 5227 schedule -->
+				<xsd:element ref="InvestmentsCorpBondsSchedule" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Investments Corporate Bonds Schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 5227 schedule -->
+				<xsd:element ref="InvestmentsCorpStockSchedule" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Investments Corporate Stock Schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 5227 schedule -->
+				<xsd:element ref="InvestmentsGovtObligationsSch" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Investments Government Obligations Schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 5227 schedule -->
+				<xsd:element ref="InvestmentsLandSchedule2" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Investments - land schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 5227 schedule -->
+				<xsd:element ref="InvestmentsOtherSchedule2" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Investments - other schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 5227 schedule -->
+				<xsd:element ref="LandEtcSchedule2" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Land, etc. schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 5227 schedule -->
+				<xsd:element ref="LoansFromOfficersSchedule" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Loans from officers schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 5227 schedule -->
+				<xsd:element ref="MortgagesAndNotesPayableSch" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Mortgages and notes payable schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 5227 schedule -->
+				<xsd:element ref="OtherAssetsSchedule" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Other Assets Schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 5227 schedule -->
+				<xsd:element ref="OtherLiabilitiesSchedule" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Other Liabilities Schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 5227 schedule -->
+				<xsd:element ref="OtherNotesLoansRcvblLongSch" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Other notes/Loans receivable long schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 5227 schedule -->
+				<xsd:element ref="OtherNotesLoansRcvblShortSch2" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Other notes/Loans receivable short schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 5227 schedule -->
+				<xsd:element ref="OtherReceivablesOfficersSch" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Other receivables from officers schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 5227 statement -->
+				<xsd:element ref="RcpntShrTotUnitrustDolPctStmt" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>Recipient Share Total Unitrust Dollar Percentage Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 5227 statement -->
+				<xsd:element ref="ReasonableCauseExplanation" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>Reasonable Cause Explanation</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 5227 statement -->
+				<xsd:element ref="TrustAccountingIncomeStatement" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>Trust Accounting Income Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 6198 statement -->
+				<xsd:element ref="GainsOrLossesForAtRiskLmtStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Form 4797 Gains or Losses For At-Risk Limitations Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 6198 statement -->
+				<xsd:element ref="OtherFormOrSchAtRiskLmtStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Other Form or Schedule Gains or Losses For At-Risk Limitations Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 6198 statement -->
+				<xsd:element ref="SchDGainsOrLossesAtRiskLmtStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Schedule D Gains or Losses For At-Risk Limitations Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 6781 schedule -->
+				<xsd:element ref="ExplanationOfForm1099BAdjSch" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Explanation of Form 1099-B adjustments schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 6781 statement -->
+				<xsd:element ref="ListOfForeignCurContractsStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>List of foreign currency contracts statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 6781 statement -->
+				<xsd:element ref="MixedStraddleAcctElectionStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Mixed straddle account election statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 6781 schedule -->
+				<xsd:element ref="ShortLongTermGainsSchedule" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Short/long term gains schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 6781 schedule -->
+				<xsd:element ref="ShortLongTermLossesSchedule" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Short/long term losses schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 6781 schedule -->
+				<xsd:element ref="StraddlesAndComponentsSchedule" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Straddles and components schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 8621 statement -->
+				<xsd:element ref="DeemedDivElectFrmrPFICStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Deemed Dividend Election with Respect to a Former PFIC</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 8621 statement -->
+				<xsd:element ref="DeemedDivElectSec1297ePFICStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Deemed Dividend Election with Respect to a Section 1297(e) PFIC</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 8621 statement -->
+				<xsd:element ref="DeemedDividendElectionStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Deemed Dividend Election Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 8621 statement -->
+				<xsd:element ref="QEFDistributionStatement" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>QEF Distribution Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 8621 attachment -->
+				<xsd:element ref="ShareholdersStockOwnershipStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Shareholder's Stock Ownership Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 8621 statement -->
+				<xsd:element ref="TaxationOfExcessDistriStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Taxation of Excess Distribution Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 8829 schedule -->
+				<xsd:element ref="CostOrBasisOfAddAndImprov" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>CoDepreciation Computation Schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 8829 schedule -->
+				<xsd:element ref="DepreciationComputation" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Depreciation Computation Schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 8829 statement -->
+				<xsd:element ref="SpclCmptForCrtnDycareFcltsStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Special Computation for Certain Daycare Facilities Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 8886 statement -->
+				<xsd:element ref="ContF8886ExpctTaxBnftExpln" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Continuation Of Form 8886 Expected Tax Benefits Explanation</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 8949 statement -->
+				<xsd:element ref="BadDebtStatement" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Bad debt statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form 8949 Statement -->
+				<xsd:element ref="BasisOthThanActlCostPropStmt" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Basis Other Than Actual Cost of Property Statement</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Form T (Timber) statement -->
+				<xsd:element ref="DedExpendSilviculturalActySch" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Currently Deductible Expenditures for Other Silvicultural Activities Schedule</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- Binary Attachment -->
+				<xsd:element ref="BinaryAttachment" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Binary Attachment</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+				<!-- General Dependency Small for any Form/Schedule -->
+				<xsd:element ref="GeneralDependencySmall" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>General Dependency Small (attachment not identified on the form or instructions)</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+
+			</xsd:sequence>
+
+			<xsd:attributeGroup ref="ReturnDataAttributes">
+				<xsd:annotation>
+					<xsd:documentation>Common return data attributes</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attributeGroup>
+
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>
+

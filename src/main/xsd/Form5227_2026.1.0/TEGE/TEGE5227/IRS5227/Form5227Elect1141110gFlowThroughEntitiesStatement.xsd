@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.irs.gov/efile" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.irs.gov/efile" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<xsd:annotation>
+		<xsd:documentation>
+			<Description>Form 5227 Election 1141110g Flow Through Entities Statement</Description>
+			<Purpose>Election 1.1411-10(g) Flow Through Entities</Purpose>
+			<TaxYear>2026</TaxYear>
+			<MaturityLevel>Final Schema Version RL10A Drop 1</MaturityLevel>
+			<ReleaseDate>May 28 2026</ReleaseDate>
+		</xsd:documentation>
+	</xsd:annotation>
+
+	<xsd:include schemaLocation="../../../Common/efileTypes.xsd"/>
+
+	<!-- ================================================================================ -->
+	<!-- ========== Form 5227 Election 1141110g Flow Through Entities Statement ========= -->
+	<!-- ================================================================================ -->
+
+	<xsd:element name="Frm5227Elect1141110gFlowStmt">
+		<xsd:annotation>
+			<xsd:documentation>Form 5227 Election 1141110g Flow Through Entities Statement</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="Frm5227Elect1141110gFlowStmtType">
+					<xsd:attributeGroup ref="DocumentAttributes">
+						<xsd:annotation>
+							<xsd:documentation>Common return document attributes</xsd:documentation>
+						</xsd:annotation>
+					</xsd:attributeGroup>
+					<xsd:attribute name="documentName" type="xsd:string" fixed="Form5227Elect1141110gFlowThroughEntitiesStatement">
+						<xsd:annotation>
+							<xsd:documentation>IRS internal use only. To avoid error in the return, do not include the attribute name or value.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="Frm5227Elect1141110gFlowStmtType">
+		<xsd:annotation>
+			<xsd:documentation>Content model for Form 5227 Election 1141110g Flow Through Entities Statement</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+
+			<!-- Entity Name -->
+			<xsd:element name="EntityName" type="BusinessNameType">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Entity Name</Description>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Entity EIN -->
+			<xsd:element name="EntityEIN" type="EINType">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Entity EIN</Description>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Repeating Group - Form 5227 election 1.1411-10(g) flow- through entities group -->
+			<xsd:element name="Frm5227Elect1141110gFlowGrp" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>
+						<Description>Repeating Group k Form 5227 election 1.1411-10(g) flow- through entities group</Description>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<!-- Elect Under Regulations Section 1.1411 Text -->
+						<xsd:element name="ElectUnderRegsSect11411Txt" type="ExplanationType">
+							<xsd:annotation>
+								<xsd:documentation>
+									<Description>Elect Under Regulations Section 1.1411 Text</Description>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+
+						<!-- Business name -->
+						<xsd:element name="BusinessName" type="BusinessNameType">
+							<xsd:annotation>
+								<xsd:documentation>
+									<Description>Business name</Description>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+
+						<xsd:choice>
+							<!-- EIN -->
+							<xsd:element name="EIN" type="EINType">
+								<xsd:annotation>
+									<xsd:documentation>
+										<Description>EIN</Description>
+									</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<!-- Foreign Entity Identification Group -->
+							<xsd:element name="ForeignEntityIdentificationGrp" type="ForeignEntityIdentificationGrpType">
+								<xsd:annotation>
+									<xsd:documentation>
+										<Description>Foreign Entity Identification Group</Description>
+									</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+						</xsd:choice>
+
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>
